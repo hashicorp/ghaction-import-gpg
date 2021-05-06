@@ -12,3 +12,14 @@ runs:
         rm temp.txt
       shell: bash
       name: import GPG key and prime passphrase
+    - id: gpg-fingerprint
+      run: |
+        fingerprint=$(gpg --with-colons --list-keys | awk -F: '/^pub/ { print $5 }')
+        echo "::set-output name=fingerprint::$fingerprint"
+      shell: bash
+      name: set gpg fingerprint output
+
+outputs:
+  fingerprint:
+    description: "Fingerprint of the GPG key (recommended as user ID)"
+    value: ${{ steps.gpg-fingerprint.outputs.fingerprint }}
