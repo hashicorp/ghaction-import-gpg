@@ -17,9 +17,19 @@ runs:
         fingerprint=$(gpg --with-colons --list-keys | awk -F: '/^pub/ { print $5 }')
         echo "::set-output name=fingerprint::$fingerprint"
       shell: bash
-      name: set gpg fingerprint output
+      name: set gpg key fingerprint
+    - id: gpg-pubkey
+      run: |
+        pubkey=$(gpg --export --armor ${{ steps.gpg-fingerprint.outputs.fingerprint }} | sed 's/$/\\\\n/' | tr -d '\n')
+        echo "::set-output name=pubkey::$pubkey"
+      shell: bash
+      name: set gpg key pubkey
 
 outputs:
   fingerprint:
-    description: "Fingerprint of the GPG key (recommended as user ID)"
+    description: "Fingerprint of the GPG key"
     value: ${{ steps.gpg-fingerprint.outputs.fingerprint }}
+  pubkey:
+    description: "Base64 encoded, armored pubkey of the GPG key"
+    value: ${{ steps.gpg-pubkey.outputs.pubkey }}
+
