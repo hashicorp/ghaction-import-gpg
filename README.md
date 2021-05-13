@@ -29,5 +29,7 @@ jobs:
           PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - run: |
           touch foo.txt
+          echo {{ steps.import_gpg.outputs.fingerprint }}
+          echo {{ steps.import_gpg.outputs.pubkey }}
           gpg --detach-sig foo.txt
 ```
