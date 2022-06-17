@@ -11,6 +11,8 @@ Following environment variables must be used as `step.env` keys
 | `GPG_PRIVATE_KEY`  | GPG private key exported as an ASCII armored version (**required**) |
 | `PASSPHRASE`       | Passphrase of the `GPG_PRIVATE_KEY` key if set |
 
+Details on how to generate the Private Key and Passphrase can be found in our [learn guide](https://learn.hashicorp.com/tutorials/terraform/provider-release-publish?in=terraform/providers#generate-gpg-signing-key).
+
 ## Workflow Example
 
 ```yaml
