@@ -1,6 +1,6 @@
 # Warning: This action as been deprecated
 
-We recommend using the [crazy-max/ghaction-import-gp](https://github.com/crazy-max/ghaction-import-gp) upstream action that this was based on.
+We recommend using the [crazy-max/ghaction-import-gpg](https://github.com/crazy-max/ghaction-import-gpg) upstream action that this was based on.
 
 # ghaction-import-gpg
 GitHub action to import GPG private key
