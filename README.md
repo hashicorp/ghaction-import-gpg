@@ -1,6 +1,25 @@
-# Warning: This action as been deprecated
+# Warning: This action has been deprecated
 
 We recommend using the [crazy-max/ghaction-import-gpg](https://github.com/crazy-max/ghaction-import-gpg) upstream action that this was based on.
+
+Note that there are a few small changes between this action and the upstream. You'll need to change the snippet of yaml from this:
+
+```yaml
+uses: hashicorp/ghaction-import-gpg@v2.1.0
+env:
+  GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+  PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }} 
+```
+
+
+To this:
+
+```yaml
+uses: crazy-max/ghaction-import-gpg@v5.0.0
+with:
+  gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+  passphrase: ${{ secrets.GPG_PASSPHRASE }}
+```
 
 # ghaction-import-gpg
 GitHub action to import GPG private key
